@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Theek\\OneDrive\\Desktop\\c#\\new\\new\\new.csproj",
+      "projectUniqueName": "C:\\3rd sem\\GUI\\NP\\GUI\\new\\new.csproj",
       "projectName": "new",
-      "projectPath": "C:\\Users\\Theek\\OneDrive\\Desktop\\c#\\new\\new\\new.csproj",
+      "projectPath": "C:\\3rd sem\\GUI\\NP\\GUI\\new\\new.csproj",
       "packagesPath": "C:\\Users\\Theek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Theek\\OneDrive\\Desktop\\c#\\new\\new\\obj\\",
+      "outputPath": "C:\\3rd sem\\GUI\\NP\\GUI\\new\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Theek\\AppData\\Roaming\\NuGet\\NuGet.Config",
