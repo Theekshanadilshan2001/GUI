@@ -1,0 +1,14 @@
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\bin\Debug\net8.0\new.exe
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\bin\Debug\net8.0\new.deps.json
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\bin\Debug\net8.0\new.runtimeconfig.json
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\bin\Debug\net8.0\new.dll
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\bin\Debug\net8.0\new.pdb
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.AssemblyInfoInputs.cache
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.AssemblyInfo.cs
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.csproj.CoreCompileInputs.cache
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.dll
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\refint\new.dll
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.pdb
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\new.genruntimeconfig.cache
+C:\Users\Theek\OneDrive\Desktop\c#\new\new\obj\Debug\net8.0\ref\new.dll
