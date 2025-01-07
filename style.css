@@ -89,7 +89,7 @@ span {
     border: 2px solid var(--main-color);
     border-radius: irem;
     font-size: 1.6rem;
-    font weight: 600;
+    font-weight: 600;
     transition: all 0.5s ease;
 }
 
@@ -116,7 +116,7 @@ span {
 
  .home-content h3 {
     font-size: 5rem;
-    font- weight: 700;
+    font-weight: 700;
  }
 
  .home-content span{
@@ -140,16 +140,16 @@ span {
 
  .home-img::before{
     content: 'FITNESS';
-    position: absolute;
-    top: 10%;
-    left: 30%
-    transform: translateX(-50%);
-    font-size: 20rem;
-    font-weight: 400;
-    line-height: 20rem;
-    color: var(--text-color);
-    opacity: 0.1;
-    z-index: -1;
+position: absolute;
+top: 10%;
+left: 30%;
+transform: translateX(-50%);
+font-size: 20rem;
+font-weight: 400;
+line-height: 20rem;
+color: var(--text-color);
+opacity: 0.1;
+z-index: -1;
  }
 
  .home-content p{
