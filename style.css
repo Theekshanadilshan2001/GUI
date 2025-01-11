@@ -442,6 +442,18 @@ z-index: -1;
     color: var(--text-color);
 }
 
+/* Scroll bar design Code */
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Appearance of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    width: 50px;
+}
 
   
 
