@@ -96,3 +96,30 @@ function calculateBMI() {
     }
   }
   
+   // Setup javascript //
+
+   function setupAccount() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const weight = document.getElementById('weight').value;
+    const height = document.getElementById('height').value;
+    const age = document.getElementById('age').value;
+    const activity = document.getElementById('activity').value;
+    const goal = document.getElementById('goal').value;
+  
+    if (username && password && weight && height && age && activity && goal) {
+      // Calculate TDEE
+      const bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5; // Formula for males
+      const tdee = (bmr * activity).toFixed(2);
+  
+      // Display success message
+      document.getElementById('setup-result').innerText = `Hello, ${username}! Your TDEE is ${tdee} kcal. Goal: ${goal}. Account setup complete!`;
+  
+      // Save user data to localStorage
+      const userData = { username, password, tdee, goal };
+      localStorage.setItem('user', JSON.stringify(userData));
+    } else {
+      alert('Please fill out all fields!');
+    }
+  }
+  

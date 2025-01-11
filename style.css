@@ -702,7 +702,60 @@ z-index: -1;
   }
   
 
-
+/* Setup Section Styles */
+.setup-section {
+    background: var(--snd-bg-color);
+    padding: 5rem 8%;
+    text-align: center;
+  }
+  
+  .setup-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--main-color);
+  }
+  
+  .setup-form-container form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+  }
+  
+  .setup-form-container form input,
+  .setup-form-container form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .setup-form-container form button {
+    background: var(--main-color);
+    color: var(--text-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .setup-form-container form button:hover {
+    background: #33d8b0;
+  }
+  
+  .result-message {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--main-color);
+  }
+  
 
     
   
