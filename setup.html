@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Account Setup</title>
+  <title>Setup Account</title>
 </head>
 <body>
   <header>
@@ -12,48 +12,34 @@
   </header>
 
   <section class="setup-section">
-    <h2 class="heading">Complete Your Account</h2>
+    <h2 class="heading">Set Up Your Account</h2>
     <div class="setup-form-container">
       <form id="setup-form">
-        <!-- Username and Password -->
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter your username" required>
+        <label for="setup-name">Name:</label>
+        <input type="text" id="setup-name" placeholder="Enter your name" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Create a password" required>
+        <label for="setup-username">Username:</label>
+        <input type="text" id="setup-username" placeholder="Create a username" required>
+        
+        <label for="setup-password">Password:</label>
+        <input type="password" id="setup-password" placeholder="Create a password" required>
 
-        <!-- TDEE Calculator -->
-        <h3>TDEE Calculator</h3>
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" placeholder="Enter your weight" required>
+        <label for="setup-weight">Current Weight (kg):</label>
+        <input type="number" id="setup-weight" placeholder="Enter your weight" required>
 
-        <label for="height">Height (cm):</label>
-        <input type="number" id="height" placeholder="Enter your height" required>
+        <label for="setup-tdee">TDEE (kcal):</label>
+        <input type="number" id="setup-tdee" placeholder="Enter your TDEE" required>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" placeholder="Enter your age" required>
-
-        <label for="activity">Activity Level:</label>
-        <select id="activity" required>
-          <option value="1.2">Sedentary</option>
-          <option value="1.375">Lightly Active</option>
-          <option value="1.55">Moderately Active</option>
-          <option value="1.725">Very Active</option>
-          <option value="1.9">Super Active</option>
-        </select>
-
-        <!-- Fitness Goal -->
-        <h3>Fitness Goal</h3>
-        <label for="goal">Select Your Goal:</label>
-        <select id="goal" required>
+        <label for="setup-goal">Goal:</label>
+        <select id="setup-goal" required>
           <option value="Fat Loss">Fat Loss</option>
           <option value="Muscle Build">Muscle Build</option>
           <option value="Strength Training">Strength Training</option>
         </select>
-
-        <button type="button" onclick="setupAccount()">Let's Go!</button>
+        
+        <button type="button" onclick="setupAccount()">Set Up Account</button>
+        <p id="setup-result" class="result-message"></p>
       </form>
-      <p id="setup-result" class="result-message"></p>
     </div>
   </section>
 

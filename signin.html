@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Sign In</title>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Royal <span>Fitness</span></a>
+  </header>
+
+  <section class="signin-section">
+    <h2 class="heading">Sign In</h2>
+    <div class="signin-form-container">
+      <form id="signin-form">
+        <label for="signin-username">Username:</label>
+        <input type="text" id="signin-username" placeholder="Enter your username" required>
+        
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" placeholder="Enter your password" required>
+        
+        <button type="button" onclick="signIn()">Log In</button>
+        <p id="signin-error" class="result-message"></p>
+      </form>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
