@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Royal Fitnness</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+  <title>Royal Fitness</title>
+  
 </head>
 <body>
     <header>
@@ -28,24 +30,32 @@
     <!-- Home Section Code -->
 
     <section class ="home" id ="home">
-        <div class ="home-content">
+        <div class ="home-content"data-aos="zoom-in">
             <h3> Build Your</h3>
             <h1> Dream Physique</h1>
-            <h3><span class ="multiple-text">Bodybuilding</span></h3>
+            <h3><span class ="multiple-text"></span></h3>
             <p>Royal Fitness is your ultimate destination for health and wellness. Lets achieve your dream figure.</p>
              <a href ="#" class ="btn">Join Us</a>
 
              
         </div>
-        <div class ="home-img">
+        <div class ="home-img" data-aos="zoom-in">
             <img src="images/bodybuilding-men-s-health-weight-training-physical-fitness-bodybuilding-0b65ef1397359066d64e01bb11dacee3.png" alt ="Home Image">
          </div>
     </section>
 
     <!-- Services Section Code-->
      <section class="services" id="services">
-        <h2 class="heading">Our<Span>Services</Span></h2>
-        <div class="services-content">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+        <h2 class="heading"data-aos="zoom-in-down">Our<Span>Services</Span></h2>
+        <div class="services-content"data-aos="zoom-in-up">
             <div class="row">
                 <img src="images/fitness-1-f99bbb6e516492dce463af4ffec94bd6.jpg" alt="">
                 <h4>Physical Fitness</h4>
@@ -82,10 +92,10 @@
      </section>
 
      <section class="about" id="about">
-        <div class="about-img">
+        <div class="about-img"data-aos="zoom-in-down">
             <img src="images/about.jpg" alt="">
         </div>
-        <div class="about-content">
+        <div class="about-content"data-aos="zoom-in-up">
             <h2 class="heading">Why Choose Us?</h2>
             <p>Our inclusive and diverse community fosters a welcoming and supportive environment, helping you connect with others and stay inspired</p>
             <p>Join us to experience a vibrant and engaging community that values diversity.</p>
@@ -107,8 +117,8 @@
     <br>
     <br>
     <br>
-        <h2 class="heading">Our <span>Plans</span></h2>
-        <div class="plans-content">
+        <h2 class="heading"data-aos="zoom-in-down">Our <span>Plans</span></h2>
+        <div class="plans-content"data-aos="zoom-in-Up">
           <div class="box">
             <h3>BASIC</h3>
             <h2><span>$100/Month</span></h2>
@@ -163,9 +173,9 @@
       <br>
       <br>
       <br>
-      <h2 class="heading">Client<span> Reviews</span></h2>
+      <h2 class="heading"data-aos="zoom-in-down">Client<span> Reviews</span></h2>
       <div class="review-box">
-          <div class="wrapper">
+          <div class="wrapper"data-aos="zoom-in-Up">
               <div class="review-item">
                   <img src="images/1.jpg" alt="">
                   <h2>John</h2>
@@ -226,7 +236,16 @@
   
 </footer>
 
-  
-      
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    offset: 300,
+    duration: 1400,
+  });
+</script>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="script.js"></script>
+    
 </body>
 </html>
