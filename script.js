@@ -61,4 +61,38 @@ function calculateBMI() {
       alert('Please fill out all required fields!');
     }
   }
+
+  
+  function createAccount() {
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const sex = document.getElementById('sex').value;
+    const email = document.getElementById('email').value;
+  
+    if (name && age && sex && email) {
+      document.getElementById('join-result').innerText = `Welcome to Royal Fitness, ${name}! Your account has been created.`;
+      document.getElementById('join-form').reset(); // Clear form fields
+    } else {
+      alert('Please fill in all the fields!');
+    }
+  }
+
+  
+  // create local storage //
+
+  function createAccount() {
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const sex = document.getElementById('sex').value;
+    const email = document.getElementById('email').value;
+  
+    if (name && age && sex && email) {
+      const user = { name, age, sex, email };
+      localStorage.setItem('user', JSON.stringify(user));
+      document.getElementById('join-result').innerText = `Welcome to Royal Fitness, ${name}! Your account has been created.`;
+      document.getElementById('join-form').reset();
+    } else {
+      alert('Please fill in all the fields!');
+    }
+  }
   
