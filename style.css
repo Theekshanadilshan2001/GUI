@@ -761,6 +761,13 @@ z-index: -1;
     font-weight: bold;
     color: var(--main-color);
   }
+  .setup img{
+    width: 25vw;
+    position: absolute;
+  top: 0;
+  right: 0;
+  }
+
 
   
   /* Profile Section Styles */
