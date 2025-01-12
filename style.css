@@ -700,7 +700,11 @@ z-index: -1;
     font-weight: bold;
     color: var(--main-color);
   }
-  
+
+  .joining img{
+    width: 25vw;
+    text-align: top;
+  }
 
 /* Setup Section Styles */
 .setup-section {
@@ -863,4 +867,8 @@ z-index: -1;
   .weight-update button:active {
     background: #28b896; /* Slightly darker color for active state */
   }
+
+  /*joining section code */
+  
+ 
   
