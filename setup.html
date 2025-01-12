@@ -37,12 +37,46 @@
           <option value="Strength Training">Strength Training</option>
         </select>
         
-        <button type="button" onclick="setupAccount()">Set Up Account</button>
+        <button type="button" id="setup-account-button">Set Up Account</button>
+
         <p id="setup-result" class="result-message"></p>
       </form>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <div id="menu-icon" class="menu-icon"></div>
+
+  <script>
+    // Store user data in localStorage and redirect to profile page
+    document.getElementById("setup-account-button").addEventListener("click", () => {
+      const userName = document.getElementById("setup-name").value.trim();
+      const userTDEE = document.getElementById("setup-tdee").value.trim();
+      const userWeight = document.getElementById("setup-weight").value.trim();
+      const userGoal = document.getElementById("setup-goal").value.trim();
+
+      if (userName && userTDEE && userWeight && userGoal) {
+        // Save data to localStorage
+        localStorage.setItem("userName", userName);
+        localStorage.setItem("userTDEE", userTDEE);
+        localStorage.setItem("userWeight", userWeight);
+        localStorage.setItem("userGoal", userGoal);
+
+        // Initialize weight history
+        localStorage.setItem("weightHistory", JSON.stringify([userWeight]));
+
+        // Redirect to profile page
+        document.getElementById("setup-result").textContent = "Account setup complete! Redirecting to your profile...";
+        document.getElementById("setup-result").style.color = "green";
+
+        setTimeout(() => {
+          window.location.href = "profile.html"; // Replace with the actual path to your profile page
+        }, 2000);
+      } else {
+        // Show error message
+        document.getElementById("setup-result").textContent = "Please fill all fields!";
+        document.getElementById("setup-result").style.color = "red";
+      }
+    });
+  </script>
 </body>
 </html>

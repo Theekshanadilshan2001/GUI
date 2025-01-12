@@ -3,40 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Your Profile</title>
+  <title>Profile</title>
+  <link rel="stylesheet" href="style.css"> <!-- Replace with your main CSS file -->
 </head>
 <body>
-  <header>
-    <a href="index.html" class="logo">Royal <span>Fitness</span></a>
-  </header>
+  <div class="profile-section">
+    <p class="greeting"><span id="greeting-time"></span>, <span id="user-name">(User's Name)</span></p>
+    <h1>WELCOME BACK!</h1>
+    <p>Your TDEE Value is</p>
+    <p id="user-tdee">(User's TDEE Value)</p>
 
-  <section class="profile-section">
-    <h2 class="heading">Welcome Back!</h2>
-    <div class="profile-container">
-      <p id="greeting"></p>
-      <p id="calorie-message"></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody id="weight-table">
+        <!-- Weight entries will be dynamically added here -->
+      </tbody>
+    </table>
 
-      <h3>Weekly Weight Tracking</h3>
-      <table id="weight-table">
-        <thead>
-          <tr>
-            <th>Week</th>
-            <th>Date</th>
-            <th>Weight (kg)</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-
-      <div class="weight-update">
-        <label for="weight-log">Update Weight:</label>
-        <input type="number" id="weight-log" placeholder="Enter your weight">
-        <button type="button" onclick="updateWeight()">Update</button>
-      </div>
+    <div class="update-section">
+      <input type="number" id="weight-input" placeholder="Enter new weight" />
+      <button id="update-button">Update</button>
     </div>
-  </section>
+  </div>
 
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Replace with your main JS file -->
 </body>
 </html>
