@@ -12,21 +12,54 @@
   </header>
 
   <section class="signin-section">
-    <h2 class="heading">Sign In</h2>
+    <h2 class="heading">Sign In to Your Account</h2>
     <div class="signin-form-container">
       <form id="signin-form">
         <label for="signin-username">Username:</label>
         <input type="text" id="signin-username" placeholder="Enter your username" required>
-        
+
         <label for="signin-password">Password:</label>
         <input type="password" id="signin-password" placeholder="Enter your password" required>
         
-        <button type="button" onclick="signIn()">Log In</button>
-        <p id="signin-error" class="result-message"></p>
+        <button type="button" id="signin-button">Sign In</button>
+
+        <p id="signin-result" class="result-message"></p>
       </form>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const signinButton = document.getElementById("signin-button");
+
+      signinButton.addEventListener("click", () => {
+        const username = document.getElementById("signin-username").value.trim();
+        const password = document.getElementById("signin-password").value.trim();
+
+        // Retrieve stored users
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find user by username and password
+        const user = users.find(
+          (user) => user.username === username && user.password === password
+        );
+
+        if (user) {
+          // Successful login
+          localStorage.setItem("currentUser", username);
+          document.getElementById("signin-result").textContent = "Login successful! Redirecting to your profile...";
+          document.getElementById("signin-result").style.color = "green";
+
+          setTimeout(() => {
+            window.location.href = "profile.html"; // Redirect to profile page
+          }, 2000);
+        } else {
+          // Invalid credentials or no account
+          document.getElementById("signin-result").textContent = "Invalid username or password, or account does not exist!";
+          document.getElementById("signin-result").style.color = "red";
+        }
+      });
+    });
+  </script>
 </body>
 </html>

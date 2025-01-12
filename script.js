@@ -1,73 +1,75 @@
-// Select the menu and navbar elements safely
-document.addEventListener('DOMContentLoaded', () => {
-  let menu = document.querySelector('#menu-icon');
-  let navbar = document.querySelector('.navbar');
+// Menu and Navbar Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.querySelector("#menu-icon");
+  const navbar = document.querySelector(".navbar");
 
   if (menu && navbar) {
-      menu.onclick = () => {
-          menu.classList.toggle('bx-x');
-          navbar.classList.toggle('active');
-      };
+    menu.onclick = () => {
+      menu.classList.toggle("bx-x");
+      navbar.classList.toggle("active");
+    };
 
-      window.onscroll = () => {
-          menu.classList.remove('bx-x');
-          navbar.classList.remove('active');
-      };
+    window.onscroll = () => {
+      menu.classList.remove("bx-x");
+      navbar.classList.remove("active");
+    };
   }
 });
 
-// Typed.js configuration (ensure .multiple-text exists in your HTML)
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.multiple-text')) {
-      const typed = new Typed('.multiple-text', {
-          strings: ['Physical Fitness', 'Weight Gain', 'Strength Training', 'Fat Loss', 'Personal Training', 'Nutrition Plans'],
-          typeSpeed: 60,
-          backSpeed: 60,
-          backDelay: 1000,
-          loop: true,
-      });
-  }
-});
-
-// Account setup logic
+// Typed.js Configuration
 document.addEventListener("DOMContentLoaded", () => {
-  // Get the button element safely
+  if (document.querySelector(".multiple-text")) {
+    new Typed(".multiple-text", {
+      strings: [
+        "Physical Fitness",
+        "Weight Gain",
+        "Strength Training",
+        "Fat Loss",
+        "Personal Training",
+        "Nutrition Plans",
+      ],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 1000,
+      loop: true,
+    });
+  }
+});
+
+// Account Setup Logic
+document.addEventListener("DOMContentLoaded", () => {
   const setupButton = document.getElementById("setup-account-button");
 
   if (setupButton) {
-      setupButton.addEventListener("click", setupAccount);
-  } else {
-      console.error("Setup Account button not found!");
-  }
+    setupButton.addEventListener("click", () => {
+      const name = document.getElementById("setup-name").value.trim();
+      const username = document.getElementById("setup-username").value.trim();
+      const password = document.getElementById("setup-password").value.trim();
+      const weight = parseFloat(document.getElementById("setup-weight").value.trim());
+      const tdee = parseFloat(document.getElementById("setup-tdee").value.trim());
+      const goal = document.getElementById("setup-goal").value.trim();
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  function setupAccount() {
-      const name = document.getElementById("setup-name").value;
-      const username = document.getElementById("setup-username").value;
-      const password = document.getElementById("setup-password").value;
-      const weight = parseFloat(document.getElementById("setup-weight").value);
-      const tdee = parseFloat(document.getElementById("setup-tdee").value);
-      const goal = document.getElementById("setup-goal").value;
-
-      // Validation
       if (!name || !username || !password || isNaN(weight) || isNaN(tdee) || !goal) {
-          alert("Please fill out all fields!");
-          return;
+        alert("Please fill out all fields!");
+        return;
       }
 
-      const calories =
-          goal === "Fat Loss" ? tdee - 250 : goal === "Muscle Build" ? tdee + 250 : tdee + 500;
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const userExists = users.some((user) => user.username === username);
+
+      if (userExists) {
+        alert("Username already exists. Please choose a different username.");
+        return;
+      }
 
       const user = {
-          name,
-          username,
-          password,
-          weight,
-          tdee,
-          goal,
-          calories,
-          weights: [{ week: 1, date: new Date().toLocaleDateString(), weight }],
+        name,
+        username,
+        password,
+        weight,
+        tdee,
+        goal,
+        weights: [{ date: new Date().toLocaleDateString(), weight }],
       };
 
       users.push(user);
@@ -75,62 +77,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
       alert("Account setup complete! Redirecting to your profile...");
       window.location.href = "profile.html";
+    });
   }
 });
 
+// Sign-In Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const signinButton = document.getElementById("signin-button");
 
-// script.js
+  if (signinButton) {
+    signinButton.addEventListener("click", () => {
+      const username = document.getElementById("signin-username").value.trim();
+      const password = document.getElementById("signin-password").value.trim();
 
-// Function to determine greeting based on current time
-function getGreeting() {
-    const currentHour = new Date().getHours();
-    if (currentHour < 12) return "Good Morning";
-    if (currentHour < 18) return "Good Afternoon";
-    return "Good Evening";
-  }
-  
-  // Load user data from localStorage or setup page
-  function loadUserData() {
-    const userName = localStorage.getItem("userName") || "Guest";
-    const userTDEE = localStorage.getItem("userTDEE") || "Not set";
-    const weightHistory = JSON.parse(localStorage.getItem("weightHistory") || "[]");
-  
-    // Set greeting and user data
-    document.getElementById("greeting-time").textContent = getGreeting();
-    document.getElementById("user-name").textContent = userName;
-    document.getElementById("user-tdee").textContent = userTDEE;
-  
-    // Populate weight history table
-    const weightTable = document.getElementById("weight-table");
-    weightTable.innerHTML = ""; // Clear table
-    weightHistory.forEach((weight, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>Week ${index + 1}</td><td>${weight} kg</td>`;
-      weightTable.appendChild(row);
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(
+        (user) => user.username === username && user.password === password
+      );
+
+      if (user) {
+        localStorage.setItem("currentUser", username);
+        alert("Login successful! Redirecting to your profile...");
+        setTimeout(() => {
+          window.location.href = "profile.html";
+        }, 2000);
+      } else {
+        alert("Invalid username or password, or account does not exist!");
+      }
     });
   }
-  
-  // Handle weight updates
-  function handleWeightUpdate() {
-    const weightInput = document.getElementById("weight-input");
-    const newWeight = parseFloat(weightInput.value);
-    if (!isNaN(newWeight) && newWeight > 0) {
-      const weightHistory = JSON.parse(localStorage.getItem("weightHistory") || "[]");
-      weightHistory.push(newWeight);
-      localStorage.setItem("weightHistory", JSON.stringify(weightHistory));
-      weightInput.value = ""; // Clear input field
-      loadUserData(); // Refresh table
-    } else {
-      alert("Please enter a valid weight!");
-    }
+});
+
+// Profile Page Logic
+function loadUserData() {
+  const username = localStorage.getItem("currentUser");
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((user) => user.username === username);
+
+  if (!user) {
+    alert("No user data found. Please sign in first.");
+    window.location.href = "signin.html";
+    return;
   }
-  
-  // Event listeners
-  document.addEventListener("DOMContentLoaded", () => {
-    loadUserData();
-  
-    const updateButton = document.getElementById("update-button");
-    updateButton.addEventListener("click", handleWeightUpdate);
+
+  document.getElementById("greeting-time").textContent = getGreeting();
+  document.getElementById("user-name").textContent = user.name;
+  document.getElementById("user-tdee").textContent = user.tdee;
+
+  const weightTable = document.getElementById("weight-table");
+  weightTable.innerHTML = "";
+  user.weights.forEach((entry, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>Week ${index + 1}</td><td>${entry.weight} kg</td>`;
+    weightTable.appendChild(row);
   });
-  
-  
+}
+
+function handleWeightUpdate() {
+  const username = localStorage.getItem("currentUser");
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const userIndex = users.findIndex((user) => user.username === username);
+
+  if (userIndex === -1) {
+    alert("No user data found. Please sign in first.");
+    return;
+  }
+
+  const newWeight = parseFloat(document.getElementById("weight-input").value.trim());
+  if (!isNaN(newWeight) && newWeight > 0) {
+    users[userIndex].weights.push({
+      date: new Date().toLocaleDateString(),
+      weight: newWeight,
+    });
+    localStorage.setItem("users", JSON.stringify(users));
+    document.getElementById("weight-input").value = "";
+    loadUserData();
+  } else {
+    alert("Please enter a valid weight!");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("profile-page")) {
+    loadUserData();
+    document.getElementById("update-button").addEventListener("click", handleWeightUpdate);
+  }
+});
+
+// Greeting Function
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good Morning";
+  if (hour < 18) return "Good Afternoon";
+  return "Good Evening";
+}

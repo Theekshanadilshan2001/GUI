@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Profile</title>
-  <link rel="stylesheet" href="style.css"> <!-- Replace with your main CSS file -->
 </head>
 <body>
-  <div class="profile-section">
-    <p class="greeting"><span id="greeting-time"></span>, <span id="user-name">(User's Name)</span></p>
+  <div id="profile-page" class="profile-section">
+    <p class="greeting">
+      <span id="greeting-time"></span>, <span id="user-name">(User's Name)</span>
+    </p>
     <h1>WELCOME BACK!</h1>
     <p>Your TDEE Value is</p>
     <p id="user-tdee">(User's TDEE Value)</p>
@@ -31,6 +33,72 @@
     </div>
   </div>
 
-  <script src="script.js"></script> <!-- Replace with your main JS file -->
+  <script>
+    // Function to get greeting based on current time
+    function getGreeting() {
+      const hour = new Date().getHours();
+      if (hour < 12) return "Good Morning";
+      if (hour < 18) return "Good Afternoon";
+      return "Good Evening";
+    }
+
+    // Load user data from localStorage
+    function loadUserData() {
+      const username = localStorage.getItem("currentUser");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find((user) => user.username === username);
+
+      if (!user) {
+        alert("No user data found. Please sign in first.");
+        window.location.href = "signin.html";
+        return;
+      }
+
+      // Update the UI with user data
+      document.getElementById("greeting-time").textContent = getGreeting();
+      document.getElementById("user-name").textContent = user.name;
+      document.getElementById("user-tdee").textContent = user.tdee;
+
+      // Populate weight history table
+      const weightTable = document.getElementById("weight-table");
+      weightTable.innerHTML = "";
+      user.weights.forEach((entry, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>Week ${index + 1}</td><td>${entry.weight} kg</td>`;
+        weightTable.appendChild(row);
+      });
+    }
+
+    // Handle weight updates
+    function handleWeightUpdate() {
+      const username = localStorage.getItem("currentUser");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const userIndex = users.findIndex((user) => user.username === username);
+
+      if (userIndex === -1) {
+        alert("No user data found. Please sign in first.");
+        return;
+      }
+
+      const newWeight = parseFloat(document.getElementById("weight-input").value.trim());
+      if (!isNaN(newWeight) && newWeight > 0) {
+        users[userIndex].weights.push({
+          date: new Date().toLocaleDateString(),
+          weight: newWeight,
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+        document.getElementById("weight-input").value = "";
+        loadUserData();
+      } else {
+        alert("Please enter a valid weight!");
+      }
+    }
+
+    // Event listeners
+    document.addEventListener("DOMContentLoaded", () => {
+      loadUserData();
+      document.getElementById("update-button").addEventListener("click", handleWeightUpdate);
+    });
+  </script>
 </body>
 </html>

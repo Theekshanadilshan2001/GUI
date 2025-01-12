@@ -20,7 +20,7 @@
 
         <label for="setup-username">Username:</label>
         <input type="text" id="setup-username" placeholder="Create a username" required>
-        
+
         <label for="setup-password">Password:</label>
         <input type="password" id="setup-password" placeholder="Create a password" required>
 
@@ -47,35 +47,58 @@
   <div id="menu-icon" class="menu-icon"></div>
 
   <script>
-    // Store user data in localStorage and redirect to profile page
-    document.getElementById("setup-account-button").addEventListener("click", () => {
-      const userName = document.getElementById("setup-name").value.trim();
-      const userTDEE = document.getElementById("setup-tdee").value.trim();
-      const userWeight = document.getElementById("setup-weight").value.trim();
-      const userGoal = document.getElementById("setup-goal").value.trim();
+    // Account setup functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const setupButton = document.getElementById("setup-account-button");
 
-      if (userName && userTDEE && userWeight && userGoal) {
-        // Save data to localStorage
-        localStorage.setItem("userName", userName);
-        localStorage.setItem("userTDEE", userTDEE);
-        localStorage.setItem("userWeight", userWeight);
-        localStorage.setItem("userGoal", userGoal);
+      setupButton.addEventListener("click", () => {
+        const name = document.getElementById("setup-name").value.trim();
+        const username = document.getElementById("setup-username").value.trim();
+        const password = document.getElementById("setup-password").value.trim();
+        const weight = parseFloat(document.getElementById("setup-weight").value.trim());
+        const tdee = parseFloat(document.getElementById("setup-tdee").value.trim());
+        const goal = document.getElementById("setup-goal").value.trim();
 
-        // Initialize weight history
-        localStorage.setItem("weightHistory", JSON.stringify([userWeight]));
+        // Validate input fields
+        if (!name || !username || !password || isNaN(weight) || isNaN(tdee) || !goal) {
+          document.getElementById("setup-result").textContent = "Please fill all fields!";
+          document.getElementById("setup-result").style.color = "red";
+          return;
+        }
 
-        // Redirect to profile page
+        // Retrieve existing users from localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userExists = users.some((user) => user.username === username);
+
+        if (userExists) {
+          document.getElementById("setup-result").textContent = "Username already exists. Please choose a different username.";
+          document.getElementById("setup-result").style.color = "red";
+          return;
+        }
+
+        // Create new user object
+        const user = {
+          name,
+          username,
+          password,
+          weight,
+          tdee,
+          goal,
+          weights: [{ date: new Date().toLocaleDateString(), weight }],
+        };
+
+        // Save user to localStorage
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Success message and redirect
         document.getElementById("setup-result").textContent = "Account setup complete! Redirecting to your profile...";
         document.getElementById("setup-result").style.color = "green";
 
         setTimeout(() => {
-          window.location.href = "profile.html"; // Replace with the actual path to your profile page
+          window.location.href = "profile.html";
         }, 2000);
-      } else {
-        // Show error message
-        document.getElementById("setup-result").textContent = "Please fill all fields!";
-        document.getElementById("setup-result").style.color = "red";
-      }
+      });
     });
   </script>
 </body>
