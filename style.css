@@ -702,8 +702,10 @@ z-index: -1;
   }
 
   .joining img{
-    width: 25vw;
-    text-align: top;
+    width: 45vw;
+    position: absolute;
+  top: 0;
+  right: 0;
   }
 
 /* Setup Section Styles */
