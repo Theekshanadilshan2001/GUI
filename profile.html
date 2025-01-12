@@ -28,8 +28,12 @@
     </table>
 
     <div class="update-section">
-      <input type="number" id="weight-input" placeholder="Enter new weight" />
+      <input type="number" id="weight-input" placeholder="Enter new weight (kg)" />
       <button id="update-button">Update</button>
+    </div>
+
+    <div id="recommendation-message" class="recommendation">
+      <!-- This will dynamically display the message based on weight differences -->
     </div>
   </div>
 
@@ -42,11 +46,50 @@
       return "Good Evening";
     }
 
+    // Function to calculate weight difference and display recommendations
+    function displayRecommendation(user) {
+      const weights = user.weights.map(entry => entry.weight); // Extract weights
+      const recommendationMessage = document.getElementById("recommendation-message");
+      recommendationMessage.innerHTML = ""; // Clear previous message
+
+      if (weights.length < 2) {
+        recommendationMessage.textContent = "Not enough data to provide recommendations.";
+        return;
+      }
+
+      // Calculate weight difference between the last two weeks
+      const latestWeight = weights[weights.length - 1];
+      const previousWeight = weights[weights.length - 2];
+      const weightDifference = latestWeight - previousWeight;
+
+      // Display message based on goal and weight difference
+      if (user.goal === "Strength Training") {
+        if (weightDifference < 0 || weightDifference < 0.4) {
+          recommendationMessage.textContent = "Please eat more 200 calories per day.";
+        } else {
+          recommendationMessage.textContent = "Eat the same amount of calories per day.";
+        }
+      } else if (user.goal === "Muscle Build") {
+        if (weightDifference < 0 || weightDifference < 0.2) {
+          recommendationMessage.textContent = "Please eat more 100 calories per day.";
+        } else {
+          recommendationMessage.textContent = "Eat the same amount of calories per day.";
+        }
+      } else if (user.goal === "Fat Loss") {
+        if (weightDifference < 0 && weightDifference > -0.2) {
+          recommendationMessage.textContent =
+            "Please reduce 100 calories per day and do more cardio.";
+        } else {
+          recommendationMessage.textContent = "Eat the same amount of calories per day.";
+        }
+      }
+    }
+
     // Load user data from localStorage
     function loadUserData() {
       const username = localStorage.getItem("currentUser");
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      const user = users.find((user) => user.username === username);
+      const user = users.find(user => user.username === username);
 
       if (!user) {
         alert("No user data found. Please sign in first.");
@@ -67,13 +110,16 @@
         row.innerHTML = `<td>Week ${index + 1}</td><td>${entry.weight} kg</td>`;
         weightTable.appendChild(row);
       });
+
+      // Call displayRecommendation to show the message
+      displayRecommendation(user);
     }
 
     // Handle weight updates
     function handleWeightUpdate() {
       const username = localStorage.getItem("currentUser");
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      const userIndex = users.findIndex((user) => user.username === username);
+      const userIndex = users.findIndex(user => user.username === username);
 
       if (userIndex === -1) {
         alert("No user data found. Please sign in first.");
