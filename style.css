@@ -776,111 +776,114 @@ z-index: -1;
 
   
   /* Profile Section Styles */
-  .profile-section {
-    background: var(--snd-bg-color);
-    padding: 5rem 8%;
-    text-align: center;
-  }
-  
-  .profile-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2.5rem;
-    background: var(--bg-color);
-    border-radius: 12px; /* Slightly more rounded corners */
-    box-shadow: 0 4px 12px var(--main-color); /* Adjusted for a softer shadow */
-    text-align: center;
-  }
-  
-  .profile-container h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--text-color); /* Dynamic text color */
-  }
-  
-  .profile-container p {
-    font-size: 1.6rem;
-    margin: 1rem 0;
+
+#profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212; /* Same dark theme as setup section */
+  color: white;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 80%; /* Adjust width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+#profile-page .greeting {
+  font-size: 2.5em; /* Increase font size for greeting */
+  color: white; /* Greeting color */
+  margin-bottom: 10px;
+}
+
+#profile-page .greeting #user-name {
+  color: var(--text-color); /* Green color for user name */
+}
+
+#profile-page .heading {
+  font-size: 2.8em; /* Adjust heading font size */
+  color: var(--main-color); /* Green theme for heading */
+  margin: 15px 0;
+}
+
+#profile-page .heading span {
+  color: #FFFFFF; /* White color for 'BACK' */
+}
+
+#profile-page p {
+  font-size: 2rem; /* Adjust font size for other text */
+  color: white;
+  margin: 5px 0;
+}
+
+#profile-page table {
+  margin-top: 20px;
+  width: 90%; /* Adjust table width */
+  border-collapse: collapse;
+}
+
+#profile-page table thead th {
+  background-color: #1e1e1e; /* Dark theme for table header */
+  color: var(--main-color); /* Green color for header text */
+  font-size: 1.1em;
+  padding: 10px;
+}
+
+#profile-page table tbody td {
+  background-color: #282828; /* Slightly lighter than header for rows */
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+#profile-page table th, #profile-page table td {
+  border: 1px solid #333; /* Border for table cells */
+}
+
+#profile-page .update-section {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px; /* Space between input and button */
+}
+
+#profile-page .update-section input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: white;
+  width: 200px;
+}
+
+#profile-page .update-section button {
+  display: incline-block;
+  padding: 1rem 2.8rem;
+  background: var(--main-color);
+  border-radius: 1rem;
+  box-shadow: none;
+  font-size: 1.6rem;
+  color: var(--bg-color);
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  transition: 0.5s ease;
+}
+
+#profile-page .update-section button:hover {
+  background: var(--main-color);
     color: var(--text-color);
-  }
-  
-  .profile-container #user-tdee {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--main-color); /* Highlighted text */
-  }
-  
-  .profile-container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    border-radius: 10px;
-    overflow: hidden; /* Ensure the rounded edges apply */
-  }
-  
-  .profile-container table th,
-  .profile-container table td {
-    border: 1px solid var(--main-color); /* Use main color for borders */
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.6rem;
-    color: var(--text-color);
-  }
-  
-  .profile-container table th {
-    background: var(--snd-bg-color); /* Secondary background for table header */
-    font-weight: bold;
-  }
-  
-  .profile-container table td {
-    background: var(--bg-color); /* Main background for rows */
-  }
-  
-  .weight-update {
-    margin-top: 2rem;
-  }
-  
-  .weight-update label {
-    display: block;
-    margin-bottom: 0.8rem;
-    font-size: 1.6rem;
-    color: var(--text-color);
-  }
-  
-  .weight-update input {
-    width: calc(100% - 2rem); /* Reduced width for spacing */
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--main-color);
-    border-radius: 8px; /* Slightly more rounded for input fields */
-    background: var(--bg-color);
-    color: var(--text-color);
-  }
-  
-  .weight-update input:focus {
-    outline: none;
-    box-shadow: 0 0 5px var(--main-color); /* Glow effect on focus */
-  }
-  
-  .weight-update button {
-    background: var(--main-color);
-    color: var(--text-color);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1.6rem;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .weight-update button:hover {
-    background: #33d8b0; /* Slightly brighter hover effect */
-  }
-  
-  .weight-update button:active {
-    background: #28b896; /* Slightly darker color for active state */
-  }
+    box-shadow: 0 0 18px;
+}
+
+#profile-page .recommendation {
+  margin-top: 20px;
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--main-color); /* Green theme for recommendation text */
+  text-align: center;
+}
+
 
   /*signin section code */
   
